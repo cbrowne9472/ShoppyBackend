@@ -6,18 +6,20 @@ import jakarta.persistence.*;
 @Table
 public class product {
     @Id
-    @SequenceGenerator(
-            name = "product_sequence",
-            sequenceName = "product_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "product_sequence"
-    )
+//    @SequenceGenerator(
+//            name = "product_sequence",
+//            sequenceName = "product_sequence",
+//            allocationSize = 1
+//    )
+    @Column(name = "id", length = 45)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "user_email", length = 255)
     private String email;
+    @Column(name = "product_name", length = 255)
     private String name;
+    @Column(name = "product_description", length = 255)
     private String description;
 
     public product(Long id, String email, String name, String description) {

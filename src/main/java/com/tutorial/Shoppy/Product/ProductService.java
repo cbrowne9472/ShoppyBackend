@@ -42,8 +42,8 @@ public class ProductService {
         productRepository.deleteById(productId);
     }
 
-    @Transactional
-    public void updateProduct(Long productId, String name, String email, String description) {
+    @Transactional //We dont have JPQl queries
+    public void updateProduct(Long productId, String email, String name, String description) {
         //Getting ID from the database, if not exists throw exception
 
         //Getting student object from the database by ID
@@ -54,6 +54,8 @@ public class ProductService {
 
         if(name != null && name.length() > 0 && !name.equals(product.getName())){
             product.setName(name);
+            System.out.println(name);
+
         }
 
         if(email != null && email.length() > 0 && !email.equals(product.getEmail())){
